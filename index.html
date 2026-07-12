@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pokédex Interactiva</title>
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="logo-container">
+          <h1>Pokédex</h1>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+            <span class="material-symbols-outlined theme-icon">light_mode</span>
+          </button>
+        </div>
+        <p class="subtitle">Explora el mundo Pokémon con datos en tiempo real</p>
+      </header>
+
+      <main>
+        <form id="search-form" class="search-form">
+          <div class="search-box">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Busca por nombre o número (ej: pikachu, 150)..."
+              autocomplete="off"
+            />
+            <button type="submit" id="search-button" aria-label="Buscar Pokémon">
+              Buscar
+            </button>
+          </div>
+        </form>
+
+        <div id="pokemon-container">
+          <!-- Aquí se renderizará el Pokémon dinámicamente -->
+        </div>
+      </main>
+
+      <footer>
+        <p>Práctica de API & CSS by EsAlex's</p>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
+
