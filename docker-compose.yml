@@ -1,0 +1,10 @@
+services:
+  pokedex-web:
+    build: .
+    container_name: pokeapi
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/usr/local/apache2/htdocs/
+    restart: always
+

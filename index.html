@@ -28,6 +28,20 @@
         <p class="subtitle">Explora el mundo Pokémon con datos en tiempo real</p>
       </header>
 
+      <nav class="global-nav">
+        <button id="nav-pokemon-btn" class="nav-link active" aria-label="Ver todos los Pokémon">
+          Todos los Pokémon
+        </button>
+        <button id="nav-regions-btn" class="nav-link" aria-label="Ver regiones de Pokédex">
+          <span class="material-symbols-outlined nav-link-icon">map</span>
+          Regiones / Pokédex
+        </button>
+        <button id="nav-generations-btn" class="nav-link" aria-label="Ver generaciones de Pokémon">
+          <span class="material-symbols-outlined nav-link-icon">history_toggle_off</span>
+          Generaciones
+        </button>
+      </nav>
+
       <main>
         <form id="search-form" class="search-form">
           <div class="search-box">
@@ -44,8 +58,65 @@
           </div>
         </form>
 
-        <div id="pokemon-container">
-          <!-- Aquí se renderizará el Pokémon dinámicamente -->
+        <!-- Contenedor de Vistas -->
+        <div id="pokemon-views" class="pokemon-views-layout">
+          <!-- Vista del Detalle de un Pokémon (oculto por defecto) -->
+          <div id="detail-view" class="view-container">
+            <div class="back-btn-container">
+              <button id="back-to-list-btn" class="back-btn">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Volver al listado
+              </button>
+            </div>
+            <div id="pokemon-detail-container"></div>
+          </div>
+
+          <!-- Vista de Regiones (oculto por defecto) -->
+          <div id="regions-view" class="view-container">
+            <div class="regions-header">
+              <h2>Pokédex por Región</h2>
+              <p class="regions-subtitle">Explora los Pokémon clasificados por su región de origen</p>
+            </div>
+            <div id="regions-grid" class="regions-grid">
+              <!-- Botones de regiones inyectados aquí -->
+            </div>
+          </div>
+
+          <!-- Vista de Generaciones (oculto por defecto) -->
+          <div id="generations-view" class="view-container">
+            <div class="generations-header">
+              <h2>Generaciones Pokémon</h2>
+              <p class="generations-subtitle">Explora los Pokémon introducidos en cada etapa histórica del juego</p>
+            </div>
+            <div id="generations-grid" class="generations-grid">
+              <!-- Botones de generaciones se inyectan aquí -->
+            </div>
+          </div>
+
+          <!-- Vista del Dashboard / Listado de Pokémon (activo por defecto) -->
+          <div id="dashboard-view" class="view-container active">
+            <div id="filter-banner" class="filter-banner">
+              <div class="filter-banner-info">
+                <span class="material-symbols-outlined banner-icon">filter_alt</span>
+                <span id="filter-banner-text">Filtro Activo</span>
+              </div>
+              <button id="clear-filter-btn" class="clear-filter-btn" aria-label="Quitar filtro activo">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+            </div>
+
+            <div class="dashboard-header">
+              <div class="pokemon-counter">
+                <span id="counter-text">Cargando pokémon...</span>
+              </div>
+            </div>
+            <div id="pokemon-grid" class="pokemon-grid">
+              <!-- Las tarjetas compactas se renderizan aquí -->
+            </div>
+            <div id="pagination-container" class="pagination-container">
+              <!-- Botones de paginación dinámicos se inyectarán aquí -->
+            </div>
+          </div>
         </div>
       </main>
 
@@ -53,7 +124,19 @@
         <p>Práctica de API & CSS by EsAlex's</p>
       </footer>
     </div>
-    <script src="app.js"></script>
+    <!-- Modal de Detalles de Movimiento -->
+    <div id="move-detail-modal" class="modal-overlay">
+      <div class="modal-content animate-fade-in">
+        <button id="close-modal-btn" class="close-modal-btn" aria-label="Cerrar detalles">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div id="move-modal-body">
+          <!-- Detalles cargados dinámicamente -->
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
 
