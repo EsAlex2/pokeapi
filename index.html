@@ -41,6 +41,10 @@
           <span class="material-symbols-outlined nav-link-icon">history_toggle_off</span>
           Generaciones
         </button>
+        <button id="nav-moves-btn" class="nav-link" aria-label="Ver buscador de movimientos">
+          <span class="material-symbols-outlined nav-link-icon">sports_martial_arts</span>
+          Movimientos
+        </button>
       </nav>
 
       <main>
@@ -91,6 +95,37 @@
             </div>
             <div id="generations-grid" class="generations-grid">
               <!-- Botones de generaciones se inyectan aquí -->
+            </div>
+          </div>
+
+          <!-- Vista de Buscador de Movimientos (oculto por defecto) -->
+          <div id="moves-view" class="view-container">
+            <div class="moves-header">
+              <h2>Buscador de Movimientos</h2>
+              <p class="moves-subtitle">Busca un movimiento para descubrir qué Pokémon pueden aprenderlo</p>
+            </div>
+            
+            <div class="moves-search-container">
+              <div class="moves-search-bar">
+                <span class="material-symbols-outlined search-icon">search</span>
+                <input
+                  type="text"
+                  id="moves-search-input"
+                  placeholder="Busca un movimiento (ej: lanzallamas, placaje, surf)..."
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+
+            <div class="popular-moves-section">
+              <h3>Movimientos Populares</h3>
+              <div id="popular-moves-list" class="popular-moves-list">
+                <!-- Se inyectarán aquí botones de acceso rápido -->
+              </div>
+            </div>
+
+            <div id="moves-search-results" class="moves-search-results">
+              <!-- Resultados de búsqueda dinámicos -->
             </div>
           </div>
 

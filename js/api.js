@@ -99,5 +99,14 @@ export async function obtenerDetalleMovimiento(urlOrName) {
   return await respuesta.json();
 }
 
+// Obtener la lista completa de todos los movimientos de la PokéAPI
+export async function obtenerTodosLosMovimientos() {
+  const respuesta = await fetch(`${BASE_URL}/move?limit=1000`);
+  if (!respuesta.ok) {
+    throw new Error("No se pudo cargar la lista completa de movimientos.");
+  }
+  return await respuesta.json();
+}
+
 
 

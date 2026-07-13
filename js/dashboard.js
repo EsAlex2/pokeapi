@@ -14,12 +14,14 @@ let paginaActual = 1;
 let totalPaginas = 1;
 let cargandoDashboard = false;
 
-// Estado del filtrado por región o generación
-let modoListado = "global"; // "global", "region" o "generation"
+// Estado del filtrado por región, generación o movimiento
+let modoListado = "global"; // "global", "region", "generation" o "move"
 let regionEntries = [];
 let nombreRegionActiva = "";
 let generationEntries = [];
 let nombreGeneracionActiva = "";
+let moveEntries = [];
+let nombreMovimientoActivo = "";
 
 // Elementos del Banner de Filtro
 const filterBanner = document.getElementById("filter-banner");
@@ -54,6 +56,9 @@ export async function cargarDashboard() {
   } else if (modoListado === "generation") {
     filterBanner.classList.add("active");
     filterBannerText.textContent = `Generación: ${nombreGeneracionActiva}`;
+  } else if (modoListado === "move") {
+    filterBanner.classList.add("active");
+    filterBannerText.textContent = `Movimiento: ${nombreMovimientoActivo}`;
   } else {
     filterBanner.classList.remove("active");
   }
@@ -79,6 +84,12 @@ export async function cargarDashboard() {
         const urlParts = entry.url.split("/");
         const id = urlParts[urlParts.length - 2];
         return { url: `https://pokeapi.co/api/v2/pokemon/${id}` };
+      });
+    } else if (modoListado === "move") {
+      totalPokemon = moveEntries.length;
+      const slice = moveEntries.slice(offset, offset + limit);
+      results = slice.map((entry) => {
+        return { url: entry.url };
       });
     }
 
@@ -153,9 +164,21 @@ export function limpiarFiltros() {
   nombreRegionActiva = "";
   generationEntries = [];
   nombreGeneracionActiva = "";
+  moveEntries = [];
+  nombreMovimientoActivo = "";
   offset = 0;
   cargarDashboard();
 }
+
+// Carga los Pokémon que aprenden el movimiento seleccionado
+export function cargarMovimiento(entries, nombre) {
+  modoListado = "move";
+  moveEntries = entries;
+  nombreMovimientoActivo = nombre;
+  offset = 0;
+  cargarDashboard();
+}
+
 
 
 // Genera el elemento DOM para cada tarjeta compacta del listado
