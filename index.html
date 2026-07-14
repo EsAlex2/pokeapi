@@ -19,37 +19,74 @@
   </head>
   <body>
     <div class="app-container">
-      <header>
-        <div class="logo-container">
-          <h1>Pokédex by EsAlex Dev</h1>
-          <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
-            <span class="material-symbols-outlined theme-icon">light_mode</span>
-          </button>
-        </div>
-        <p class="subtitle">Explora el mundo Pokémon con datos en tiempo real</p>
-      </header>
+      <aside class="sidebar">
+        <header>
+          <div class="logo-container">
+            <h1>Pokédex by EsAlex Dev</h1>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              aria-label="Cambiar tema"
+            >
+              <span class="material-symbols-outlined theme-icon"
+                >light_mode</span
+              >
+            </button>
+          </div>
+          <p class="subtitle">
+            Explora el mundo Pokémon con datos en tiempo real
+          </p>
+        </header>
 
-      <nav class="global-nav">
-        <button id="nav-pokemon-btn" class="nav-link active" aria-label="Ver todos los Pokémon">
-          Todos los Pokémon
-        </button>
-        <button id="nav-regions-btn" class="nav-link" aria-label="Ver regiones de Pokédex">
-          <span class="material-symbols-outlined nav-link-icon">map</span>
-          Regiones / Pokédex
-        </button>
-        <button id="nav-generations-btn" class="nav-link" aria-label="Ver generaciones de Pokémon">
-          <span class="material-symbols-outlined nav-link-icon">history_toggle_off</span>
-          Generaciones
-        </button>
-        <button id="nav-moves-btn" class="nav-link" aria-label="Ver buscador de movimientos">
-          <span class="material-symbols-outlined nav-link-icon">sports_martial_arts</span>
-          Movimientos
-        </button>
-        <button id="nav-types-btn" class="nav-link" aria-label="Ver tipos de Pokémon">
-          <span class="material-symbols-outlined nav-link-icon">category</span>
-          Tipos
-        </button>
-      </nav>
+        <nav class="global-nav">
+          <button
+            id="nav-pokemon-btn"
+            class="nav-link active"
+            aria-label="Ver todos los Pokémon"
+          >
+            <span class="material-symbols-outlined nav-link-icon"></span>
+            Todos los Pokémon
+          </button>
+          <button
+            id="nav-regions-btn"
+            class="nav-link"
+            aria-label="Ver regiones de Pokédex"
+          >
+            <span class="material-symbols-outlined nav-link-icon">map</span>
+            Regiones
+          </button>
+          <button
+            id="nav-generations-btn"
+            class="nav-link"
+            aria-label="Ver generaciones de Pokémon"
+          >
+            <span class="material-symbols-outlined nav-link-icon"
+              >history_toggle_off</span
+            >
+            Generaciones
+          </button>
+          <button
+            id="nav-moves-btn"
+            class="nav-link"
+            aria-label="Ver buscador de movimientos"
+          >
+            <span class="material-symbols-outlined nav-link-icon"
+              >sports_martial_arts</span
+            >
+            Movimientos
+          </button>
+          <button
+            id="nav-types-btn"
+            class="nav-link"
+            aria-label="Ver tipos de Pokémon"
+          >
+            <span class="material-symbols-outlined nav-link-icon"
+              >category</span
+            >
+            Tipos
+          </button>
+        </nav>
+      </aside>
 
       <main>
         <form id="search-form" class="search-form">
@@ -61,7 +98,11 @@
               placeholder="Busca por nombre o número (ej: pikachu, 150)..."
               autocomplete="off"
             />
-            <button type="submit" id="search-button" aria-label="Buscar Pokémon">
+            <button
+              type="submit"
+              id="search-button"
+              aria-label="Buscar Pokémon"
+            >
               Buscar
             </button>
           </div>
@@ -84,7 +125,9 @@
           <div id="regions-view" class="view-container">
             <div class="regions-header">
               <h2>Pokédex por Región</h2>
-              <p class="regions-subtitle">Explora los Pokémon clasificados por su región de origen</p>
+              <p class="regions-subtitle">
+                Explora los Pokémon clasificados por su región de origen
+              </p>
             </div>
             <div id="regions-grid" class="regions-grid">
               <!-- Botones de regiones inyectados aquí -->
@@ -95,7 +138,10 @@
           <div id="generations-view" class="view-container">
             <div class="generations-header">
               <h2>Generaciones Pokémon</h2>
-              <p class="generations-subtitle">Explora los Pokémon introducidos en cada etapa histórica del juego</p>
+              <p class="generations-subtitle">
+                Explora los Pokémon introducidos en cada etapa histórica del
+                juego
+              </p>
             </div>
             <div id="generations-grid" class="generations-grid">
               <!-- Botones de generaciones se inyectan aquí -->
@@ -106,12 +152,16 @@
           <div id="moves-view" class="view-container">
             <div class="moves-header">
               <h2>Buscador de Movimientos</h2>
-              <p class="moves-subtitle">Busca un movimiento para descubrir qué Pokémon pueden aprenderlo</p>
+              <p class="moves-subtitle">
+                Busca un movimiento para descubrir qué Pokémon pueden aprenderlo
+              </p>
             </div>
-            
+
             <div class="moves-search-container">
               <div class="moves-search-bar">
-                <span class="material-symbols-outlined search-icon">search</span>
+                <span class="material-symbols-outlined search-icon"
+                  >search</span
+                >
                 <input
                   type="text"
                   id="moves-search-input"
@@ -137,7 +187,9 @@
           <div id="types-view" class="view-container">
             <div class="types-header">
               <h2>Tipos Pokémon</h2>
-              <p class="types-subtitle">Explora las fortalezas, debilidades y Pokémon de cada tipo</p>
+              <p class="types-subtitle">
+                Explora las fortalezas, debilidades y Pokémon de cada tipo
+              </p>
             </div>
             <div id="types-content" class="types-content">
               <!-- Se inyecta la rejilla o la ficha de tipo detallada -->
@@ -148,10 +200,16 @@
           <div id="dashboard-view" class="view-container active">
             <div id="filter-banner" class="filter-banner">
               <div class="filter-banner-info">
-                <span class="material-symbols-outlined banner-icon">filter_alt</span>
+                <span class="material-symbols-outlined banner-icon"
+                  >filter_alt</span
+                >
                 <span id="filter-banner-text">Filtro Activo</span>
               </div>
-              <button id="clear-filter-btn" class="clear-filter-btn" aria-label="Quitar filtro activo">
+              <button
+                id="clear-filter-btn"
+                class="clear-filter-btn"
+                aria-label="Quitar filtro activo"
+              >
                 <span class="material-symbols-outlined">close</span>
               </button>
             </div>
@@ -178,7 +236,11 @@
     <!-- Modal de Detalles de Movimiento -->
     <div id="move-detail-modal" class="modal-overlay">
       <div class="modal-content animate-fade-in">
-        <button id="close-modal-btn" class="close-modal-btn" aria-label="Cerrar detalles">
+        <button
+          id="close-modal-btn"
+          class="close-modal-btn"
+          aria-label="Cerrar detalles"
+        >
           <span class="material-symbols-outlined">close</span>
         </button>
         <div id="move-modal-body">
@@ -190,4 +252,3 @@
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
-
