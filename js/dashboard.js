@@ -14,14 +14,16 @@ let paginaActual = 1;
 let totalPaginas = 1;
 let cargandoDashboard = false;
 
-// Estado del filtrado por región, generación o movimiento
-let modoListado = "global"; // "global", "region", "generation" o "move"
+// Estado del filtrado por región, generación, movimiento o tipo
+let modoListado = "global"; // "global", "region", "generation", "move" o "type"
 let regionEntries = [];
 let nombreRegionActiva = "";
 let generationEntries = [];
 let nombreGeneracionActiva = "";
 let moveEntries = [];
 let nombreMovimientoActivo = "";
+let typeEntries = [];
+let nombreTipoActivo = "";
 
 // Elementos del Banner de Filtro
 const filterBanner = document.getElementById("filter-banner");
@@ -59,6 +61,9 @@ export async function cargarDashboard() {
   } else if (modoListado === "move") {
     filterBanner.classList.add("active");
     filterBannerText.textContent = `Movimiento: ${nombreMovimientoActivo}`;
+  } else if (modoListado === "type") {
+    filterBanner.classList.add("active");
+    filterBannerText.textContent = `Tipo: ${capitalizar(nombreTipoActivo)}`;
   } else {
     filterBanner.classList.remove("active");
   }
@@ -90,6 +95,12 @@ export async function cargarDashboard() {
       const slice = moveEntries.slice(offset, offset + limit);
       results = slice.map((entry) => {
         return { url: entry.url };
+      });
+    } else if (modoListado === "type") {
+      totalPokemon = typeEntries.length;
+      const slice = typeEntries.slice(offset, offset + limit);
+      results = slice.map((entry) => {
+        return { url: entry.pokemon.url };
       });
     }
 
@@ -166,6 +177,8 @@ export function limpiarFiltros() {
   nombreGeneracionActiva = "";
   moveEntries = [];
   nombreMovimientoActivo = "";
+  typeEntries = [];
+  nombreTipoActivo = "";
   offset = 0;
   cargarDashboard();
 }
@@ -175,6 +188,15 @@ export function cargarMovimiento(entries, nombre) {
   modoListado = "move";
   moveEntries = entries;
   nombreMovimientoActivo = nombre;
+  offset = 0;
+  cargarDashboard();
+}
+
+// Activa el modo de tipo con su conjunto de datos y recarga el listado
+export function cargarTipo(entries, nombre) {
+  modoListado = "type";
+  typeEntries = entries;
+  nombreTipoActivo = nombre;
   offset = 0;
   cargarDashboard();
 }

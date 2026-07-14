@@ -4,6 +4,7 @@ import { inicializarDashboard, limpiarFiltros } from "./dashboard.js";
 import { inicializarRegiones } from "./regions.js";
 import { inicializarGeneraciones } from "./generations.js";
 import { inicializarMovesExplorer } from "./moves.js";
+import { inicializarTipos, mostrarDetalleDeTipo, mostrarListadoDeTipos } from "./types.js";
 
 // Referencias del DOM globales e intermodulares
 export const searchForm = document.getElementById("search-form");
@@ -13,12 +14,14 @@ export const dashboardView = document.getElementById("dashboard-view");
 export const regionsView = document.getElementById("regions-view");
 export const generationsView = document.getElementById("generations-view");
 export const movesView = document.getElementById("moves-view");
+export const typesView = document.getElementById("types-view");
 export const backToListBtn = document.getElementById("back-to-list-btn");
 
 const navPokemonBtn = document.getElementById("nav-pokemon-btn");
 const navRegionsBtn = document.getElementById("nav-regions-btn");
 const navGenerationsBtn = document.getElementById("nav-generations-btn");
 const navMovesBtn = document.getElementById("nav-moves-btn");
+const navTypesBtn = document.getElementById("nav-types-btn");
 const clearFilterBtn = document.getElementById("clear-filter-btn");
 
 // Función principal para obtener datos de un Pokémon y cargar su ficha
@@ -52,6 +55,7 @@ export function cambiarVista(vista) {
       regionsView.classList.remove("active");
       generationsView.classList.remove("active");
       movesView.classList.remove("active");
+      typesView.classList.remove("active");
     }
     // En desktop, el detalle ya es visible en la izquierda por defecto.
     // Retornamos sin desactivar la lista derecha para que no quede vacía.
@@ -64,12 +68,14 @@ export function cambiarVista(vista) {
   regionsView.classList.remove("active");
   generationsView.classList.remove("active");
   movesView.classList.remove("active");
+  typesView.classList.remove("active");
 
   // Ajustar active en la barra de navegación global
   navPokemonBtn.classList.remove("active");
   navRegionsBtn.classList.remove("active");
   navGenerationsBtn.classList.remove("active");
   navMovesBtn.classList.remove("active");
+  navTypesBtn.classList.remove("active");
 
   if (vista === "dashboard") {
     dashboardView.classList.add("active");
@@ -83,7 +89,16 @@ export function cambiarVista(vista) {
   } else if (vista === "moves") {
     movesView.classList.add("active");
     navMovesBtn.classList.add("active");
+  } else if (vista === "types") {
+    typesView.classList.add("active");
+    navTypesBtn.classList.add("active");
   }
+}
+
+// Navegar directamente a un tipo y cargar su detalle
+export function irAVistaDeTipo(tipoName) {
+  cambiarVista("types");
+  mostrarDetalleDeTipo(tipoName);
 }
 
 // --- Vinculación de Eventos ---
@@ -120,6 +135,11 @@ navMovesBtn.addEventListener("click", () => {
   cambiarVista("moves");
 });
 
+navTypesBtn.addEventListener("click", () => {
+  mostrarListadoDeTipos();
+  cambiarVista("types");
+});
+
 // Botón para limpiar filtro activo en el listado
 clearFilterBtn.addEventListener("click", () => {
   limpiarFiltros();
@@ -150,6 +170,7 @@ inicializarDashboard();
 inicializarRegiones();
 inicializarGeneraciones();
 inicializarMovesExplorer();
+inicializarTipos();
 obtenerPokemon("pikachu", true);
 
 

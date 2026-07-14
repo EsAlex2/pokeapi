@@ -45,6 +45,10 @@
           <span class="material-symbols-outlined nav-link-icon">sports_martial_arts</span>
           Movimientos
         </button>
+        <button id="nav-types-btn" class="nav-link" aria-label="Ver tipos de Pokémon">
+          <span class="material-symbols-outlined nav-link-icon">category</span>
+          Tipos
+        </button>
       </nav>
 
       <main>
@@ -126,6 +130,17 @@
 
             <div id="moves-search-results" class="moves-search-results">
               <!-- Resultados de búsqueda dinámicos -->
+            </div>
+          </div>
+
+          <!-- Vista de Tipos de Pokémon (oculto por defecto) -->
+          <div id="types-view" class="view-container">
+            <div class="types-header">
+              <h2>Tipos Pokémon</h2>
+              <p class="types-subtitle">Explora las fortalezas, debilidades y Pokémon de cada tipo</p>
+            </div>
+            <div id="types-content" class="types-content">
+              <!-- Se inyecta la rejilla o la ficha de tipo detallada -->
             </div>
           </div>
 

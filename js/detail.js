@@ -1,7 +1,7 @@
 import { typeColors, statNamesEs, typeTranslations, commonMoveTranslations } from "./config.js";
 import { capitalizar, extraerIdDeUrl } from "./utils.js";
 import { obtenerEspecie, obtenerCadenaEvolutiva, obtenerDetalleMovimiento } from "./api.js";
-import { obtenerPokemon } from "./main.js";
+import { obtenerPokemon, irAVistaDeTipo } from "./main.js";
 
 const pokemonDetailContainer = document.getElementById("pokemon-detail-container");
 
@@ -18,6 +18,15 @@ if (modal && closeBtn) {
     }
   });
 }
+
+// Delegación de eventos para las etiquetas de tipo clicables
+pokemonDetailContainer.addEventListener("click", (e) => {
+  const targetBadge = e.target.closest(".type-badge-clickable");
+  if (targetBadge) {
+    const tipo = targetBadge.dataset.type;
+    irAVistaDeTipo(tipo);
+  }
+});
 
 // Renderiza un spinner de carga en la vista de detalle
 export function mostrarCargandoDetalle() {
@@ -60,7 +69,7 @@ export function renderizarDetalle(pokemon) {
       const nombreTipo = t.type.name;
       const tradTipo = typeTranslations[nombreTipo] || nombreTipo;
       const colorTipo = typeColors[nombreTipo] || "#777777";
-      return `<span class="type-badge" style="--badge-color: ${colorTipo}">${capitalizar(tradTipo)}</span>`;
+      return `<span class="type-badge type-badge-clickable" data-type="${nombreTipo}" style="--badge-color: ${colorTipo}; cursor: pointer;">${capitalizar(tradTipo)}</span>`;
     })
     .join("");
 

@@ -108,5 +108,14 @@ export async function obtenerTodosLosMovimientos() {
   return await respuesta.json();
 }
 
-
-
+// Obtener los detalles de un tipo específico (relaciones de daño y pokemon de ese tipo)
+export async function obtenerDetalleTipo(urlOrIdOrName) {
+  const url = urlOrIdOrName.toString().startsWith("http")
+    ? urlOrIdOrName
+    : `${BASE_URL}/type/${urlOrIdOrName.toLowerCase()}/`;
+  const respuesta = await fetch(url);
+  if (!respuesta.ok) {
+    throw new Error("No se pudo obtener la información de este tipo.");
+  }
+  return await respuesta.json();
+}

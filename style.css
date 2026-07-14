@@ -1820,8 +1820,304 @@ body.light-theme .moves-search-bar {
   margin-bottom: 0.5rem;
 }
 
+/* --- Estilos para la Vista de Tipos --- */
+.types-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
+.types-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
 
+.types-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
 
+.types-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
 
+.type-card {
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
 
+body.light-theme .type-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.type-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--type-color, #777) 40%, transparent);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.35), 
+    0 0 15px color-mix(in srgb, var(--type-color, #777) 20%, transparent);
+}
+
+body.light-theme .type-card:hover {
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.08), 
+    0 0 15px color-mix(in srgb, var(--type-color, #777) 15%, transparent);
+}
+
+.type-card-glow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, var(--type-color, rgba(255, 255, 255, 0.1)) 0%, transparent 70%);
+  opacity: 0.15;
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.type-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--type-color, #777) 15%, rgba(255, 255, 255, 0.05));
+  color: var(--type-color, var(--text-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.type-card-icon span {
+  font-size: 1.6rem;
+}
+
+.type-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  z-index: 1;
+  letter-spacing: -0.2px;
+}
+
+/* Ficha Detallada del Tipo */
+.type-detail-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 1.75rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: color-mix(in srgb, var(--detail-type-color, #777) 20%, var(--glass-border));
+}
+
+body.light-theme .type-detail-card {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+}
+
+.detail-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 1rem;
+}
+
+.back-to-list-icon-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+body.light-theme .back-to-list-icon-btn {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.back-to-list-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-3px);
+}
+
+body.light-theme .back-to-list-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.detail-type-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.type-header-icon {
+  font-size: 2.2rem;
+  color: var(--detail-type-color, var(--text-primary));
+}
+
+.detail-type-header-title h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.relations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .relations-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.relations-column {
+  background: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+body.light-theme .relations-column {
+  background: rgba(0, 0, 0, 0.015);
+  border-color: rgba(0, 0, 0, 0.03);
+}
+
+.relations-sec-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.light-theme .relations-sec-title {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.title-icon {
+  font-size: 1.2rem;
+}
+
+.attack-title {
+  color: #ff7f50;
+}
+
+.defense-title {
+  color: #4ba3e3;
+}
+
+.relation-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.relation-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.label-strong { color: #57e389; }
+.label-weak { color: #f2a154; }
+.label-immune { color: #9ca3af; }
+.label-vulnerable { color: #f47c7c; }
+.label-resistant { color: #62b4cf; }
+.label-immune-def { color: #c394fc; }
+
+.badges-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.no-relations-text {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.type-badge-clickable:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--badge-color) 35%, transparent);
+}
+
+/* Sección inferior de la acción de filtrar */
+.filter-action-section {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.action-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.view-pokemon-btn {
+  background: var(--detail-type-color, var(--accent-primary));
+  border: none;
+  outline: none;
+  color: white;
+  padding: 0.8rem 1.75rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--detail-type-color, #777) 35%, transparent);
+}
+
+.view-pokemon-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.03);
+}
+
+.view-pokemon-btn:active {
+  transform: scale(0.97);
+}
